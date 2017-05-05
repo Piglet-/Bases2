@@ -5,9 +5,12 @@ FROM GUSTA G, FRECUENTA F, BEBEDOR B
 WHERE   G.ci = F.ci AND
         G.ci = B.ci;
 
+-- (Query 2) 14. Los bebedores que no frecuentan las fuentes de soda que 
+-- sirven al menos una de las bebidas que no les gustan.
+
+
 -- (Query 3) 27. Las bebidas que se sirven en las fuentes de soda que son 
 -- frecuentadas por las personas que les gusta la malta
-
 SELECT v.CodBeb, b2.NombreBeb
 FROM gusta g, frecuenta f, bebida b, bebedor be, vende v, bebida b2
 WHERE   b.NombreBeb = 'Malta' AND
@@ -15,5 +18,11 @@ WHERE   b.NombreBeb = 'Malta' AND
         g.ci = be.ci AND
         be.ci = f.ci AND
         f.CodFS = v.CodFS AND
-        v.CodBeb = b2.CodBeb
+        v.CodBeb = b2.CodBeb;
 
+-- (Query 4) 36. La bebida más cara en las fuentes de soda que no venden 
+-- al menos una de las bebidas que le gusta a Luis Pérez.
+
+
+-- (Query 5) 38. Las fuentes de soda que venden las bebidas que 
+-- no le gustan a Luis Pérez y que le gustan José Pérez.
