@@ -25,4 +25,15 @@ WHERE   b.NombreBeb = 'Malta' AND
 
 
 -- (Query 5) 38. Las fuentes de soda que venden las bebidas que 
--- no le gustan a Luis Pérez y que le gustan José Pérez.
+-- no le gustan a Luis Pérez y que le gustan a José Pérez.
+    SELECT fs.CodFS, fs.NombreFS
+    FROM FUENTE_SODA fs, VENDE v, BEBEDOR j, GUSTA g
+    WHERE   fs.CodFS = v.CodFS AND
+            v.CodBeb NOT IN 
+                (SELECT g.CodBeb --Bebidas que le gustan a Luis Perez
+                 FROM BEBEDOR l, GUSTA g
+                 WHERE   l.Nombre = 'Luis Pérez' AND
+                         l.CI = g.CI) AND
+            j.Nombre = 'José Pérez' AND
+            j.CI = g.CI AND
+            g.CodBeb = v.CodBeb;
